@@ -3,10 +3,9 @@ namespace ContractorProject;
 public class Subcontractor : Contractor {
     
     public int Shift { get; set; }
-
     public double HourlyPayRate { get; set; }
     public Subcontractor()
-        : base()
+        : base(string.Empty, 0, DateTime.Now)
     {
         Shift = 1;
         HourlyPayRate = 0.0;

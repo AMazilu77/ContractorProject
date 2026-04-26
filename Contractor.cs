@@ -3,7 +3,6 @@ namespace ContractorProject;
 public class Contractor {
     public string ContractorName { get; set; }
     public int ContractorNumber { get; set; }
-
     public DateTime ContractStartDate { get; set; }
 
     public Contractor(string name, decimal hourlyRate) {
@@ -16,9 +15,5 @@ public class Contractor {
         ContractorName = contractorName;
         ContractorNumber = contractorNumber;
         ContractStartDate = contractStartDate;
-    }
-
-    public Contractor()
-    {
     }
 }
