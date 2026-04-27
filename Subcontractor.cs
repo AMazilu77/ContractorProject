@@ -25,7 +25,7 @@ public class Subcontractor : Contractor {
     {
         double pay = HourlyPayRate * hoursWorked;
         if (Shift == 2) {
-            pay *= 1.05; // 5% increase for second shift
+            pay *= 1.03; // 3% increase for second shift
         } 
         
         return (float)pay;
