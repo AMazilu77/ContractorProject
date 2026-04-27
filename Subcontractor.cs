@@ -1,38 +1,59 @@
-namespace ContractorProject;
-
-public class Subcontractor : Contractor {
-    
-    public int Shift { get; set; }
-    public double HourlyPayRate { get; set; }
-    public Subcontractor()
-        : base(string.Empty, 0, DateTime.Now)
+namespace ContractorProject
+{
+    // Subcontractor inherits from Contractor.
+    // Adds shift, hourly rate, and pay calculation.
+    public class Subcontractor : Contractor
     {
-        Shift = 1;
-        HourlyPayRate = 0.0;
-    }
 
-    public Subcontractor(string ContractorName,
-     int contractorNumber,
-     DateTime contractStartDate,
-     int shift,
-     double hourlyPayRate)
-     : base(ContractorName, contractorNumber, contractStartDate) {
-        Shift = shift;
-        HourlyPayRate = hourlyPayRate;
-    }
+        // 1 = Day shift, 2 = Night shift
+        public int Shift { get; set; }
 
-    public float ComputePay(float hoursWorked)
-    {
-        double pay = HourlyPayRate * hoursWorked;
-        if (Shift == 2) {
-            pay *= 1.03; // 3% increase for second shift
-        } 
-        
-        return (float)pay;
-    }
+        // Hourly pay rate for subcontractor
+        public float HourlyPayRate { get; set; }
 
-    public string GetShiftName() {
-        return Shift == 1 ? "Day shift" : "Night";
-    }
+        // Constructor that passes shared values base Contractor class
+        public Subcontractor(string contractorName,
+                                 int contractorNumber,
+                                 DateTime contractStartDate,
+                                 int shift,
+                                 float hourlyPayRate)
+            : base(contractorName, contractorNumber, contractStartDate)
+        {
+            Shift = shift;
+            HourlyPayRate = hourlyPayRate;
+        }
 
+
+        // Total pay based on hours worked
+        // Night shift receives a 3% differentialint contractorNumber
+        public float ComputePay(float hoursWorked)
+        {
+            float pay = HourlyPayRate * hoursWorked;
+
+            // 3% increase for night shift
+            if (Shift == 2)
+            {
+                pay *= 1.03f;
+            }
+
+            return pay;
+        }
+
+        // Returns readable shift name
+        public string GetShiftName()
+        {
+            return Shift == 1 ? "Day" : "Night";
+        }
+
+        // Formats subcontractor information.
+        public override string ToString()
+        {
+            return
+                $"Name: {ContractorName}\n" +
+                $"Number: {ContractorNumber}\n" +
+                $"Start Date: {ContractStartDate.ToShortDateString()}\n" +
+                $"Shift: {GetShiftName()}\n" +
+                $"Hourly Pay Rate: ${HourlyPayRate:F2}";
+        }
+    }
 }
