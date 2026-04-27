@@ -45,26 +45,26 @@ class Program {
 
                 float totalPay = subcontractor.ComputePay(hoursWorked);
 
-                Console.WriteLine("/nSubcontractor Created: ");
+                Console.WriteLine("Subcontractor Created: ");
                 Console.WriteLine($"Name: {subcontractor.ContractorName}");
                 Console.WriteLine($"Number: {subcontractor.ContractorNumber}");
                 Console.WriteLine($"Start Date: {subcontractor.ContractStartDate.ToShortDateString()}");
                 Console.WriteLine($"Shift: {subcontractor.GetShiftName()}");
                 Console.WriteLine($"Hourly Pay Rate: {subcontractor.HourlyPayRate:C}");
-                Console.WriteLine($"Hours Worked {hoursWorked} hours: {hoursWorked:C}");
+                Console.WriteLine($"Hours Worked {hoursWorked} hours");
                 Console.WriteLine($"Total Pay: ${totalPay:F2}");
 
-                Console.WriteLine("/nWould you like to enter another subcontractor? (Type 'exit' to quit)");
-                string answer = Console.ReadLine() ?? "n";
+                Console.WriteLine("Would you like to enter another subcontractor? (Type 'exit' to quit)");
+                string answer = Console.ReadLine() ?? "no";
 
-            // if (answer == 'y')    
-            // {
-
-            //     keepGoing = false;
-            // }
+            if (answer.ToLower() == "exit")
+            {
+                 keepGoing = false;
+                 continue;
+            }
 
         //     if (name.ToLower() == "exit") {
-        //         keepGoing = false;
+        //        
         //         continue;
         
         // }
